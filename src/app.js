@@ -24,6 +24,7 @@ let day = days[now.getDay()];
 time.innerHTML = `${day}, ${hours}:${minutes}`;
 
 function newWeather(response) {
+  console.log(response.data.weather[0].icon);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -84,3 +85,10 @@ let celciusLink = document.querySelector("#celsius-link");
 celciusLink.addEventListener("click", changeToCelcius);
 
 search("London");
+
+let iconElement = document.querySelector("#icon");
+iconElement.setAttribute(
+  "src",
+  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+);
+iconElement.setAttribute("alt", response.data.weather[0].description);
