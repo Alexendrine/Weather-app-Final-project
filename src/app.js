@@ -1,58 +1,55 @@
-//
-//WRONG DATE FORMAT CODE
-//
-// let now = new Date();
-// let time = document.querySelector("#date");
+let now = new Date();
+let time = document.querySelector("#date");
 
-// let hours = now.getHours();
-// if (hours < 10) {
-//   hours = `0${hours}`;
-// }
-// let minutes = now.getMinutes();
-// if (minutes < 10) {
-//   minutes = `0${minutes}`;
-// }
-// let days = [
-//   "Sunday",
-//   "Monday",
-//   "Tuesday",
-//   "Wednesday",
-//   "Thursday",
-//   "Friday",
-//   "Saturday",
-// ];
-// let day = days[now.getDay()];
-// time.innerHTML = `${day}, ${hours}:${minutes}`;
-
-function formatDate(timestamp) {
-  let date = new Date(timestamp);
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = days[date.getDay()];
-  return `${day} ${hours}:${minutes}`;
+let hours = now.getHours();
+if (hours < 10) {
+  hours = `0${hours}`;
 }
-function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  return days[day];
+let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
 }
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let day = days[now.getDay()];
+time.innerHTML = `${day}, ${hours}:${minutes}`;
+
+// function formatDate(timestamp) {
+//   let date = new Date(timestamp);
+//   let hours = date.getHours();
+//   if (hours < 10) {
+//     hours = `0${hours}`;
+//   }
+//   let minutes = date.getMinutes();
+//   if (minutes < 10) {
+//     minutes = `0${minutes}`;
+//   }
+
+//   let days = [
+//     "Sunday",
+//     "Monday",
+//     "Tuesday",
+//     "Wednesday",
+//     "Thursday",
+//     "Friday",
+//     "Saturday",
+//   ];
+//   let day = days[date.getDay()];
+//   return `${day} ${hours}:${minutes}`;
+// }
+// function formatDay(timestamp) {
+//   let date = new Date(timestamp * 1000);
+//   let day = date.getDay();
+//   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+//   return days[day];
+// }
 
 function newWeather(response) {
   document.querySelector("#city").innerHTML = response.data.name;
@@ -65,6 +62,10 @@ function newWeather(response) {
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
+
+  document.querySelector(
+    "#icon"
+  ).src = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
 }
 
 function search(city) {
