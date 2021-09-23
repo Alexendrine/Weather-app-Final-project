@@ -195,9 +195,14 @@ function changeToFahrenheit(event) {
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
+
+function changeToCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
 let celsiusTemperature = null;
-
-
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", newCity);
@@ -206,7 +211,7 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", changeToFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", changeTocelsius);
+celsiusLink.addEventListener("click", changeToCelsius);
 
 // function changeToFahrenheit(event) {
 //   event.preventDefault();
